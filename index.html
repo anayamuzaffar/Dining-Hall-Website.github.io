@@ -746,7 +746,8 @@
           time:     new Date().toISOString(),
           user:     uid
         });
-        showToast("Thanks for your feedback!");
+        setPoints(p => p + 10);
+        showToast("Thanks for your feedback! +10 pts");
       };
 
       const getTrafficAvg = (dhId) => {
