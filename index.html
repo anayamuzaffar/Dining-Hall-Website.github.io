@@ -709,7 +709,10 @@
         const u2 = fbOn(fbRef(db, "traffic"),  snap => setTraffic(snap.val()  || {}));
         const u3 = fbOn(fbRef(db, "feedback"), snap => {
           const val = snap.val();
-          setFeedback(val ? Object.values(val) : []);
+          if (!val) { setFeedback([]); return; }
+          const items = Object.values(val).filter(f => f && f.menuItem && f.dhId);
+          items.sort((a, b) => new Date(b.time) - new Date(a.time));
+          setFeedback(items);
         });
         return () => { u1(); u2(); u3(); };
       }, []);
@@ -734,7 +737,15 @@
       };
 
       const submitFeedback = (dhId, item, rating, comment) => {
-        fbPush(fbRef(fbDb(), "feedback"), { dhId, menuItem:item, rating, comment, time:new Date().toISOString(), user:uid });
+        if (!fbDb()) { showToast("Database not connected", "error"); return; }
+        fbPush(fbRef(fbDb(), "feedback"), {
+          dhId:     dhId,
+          menuItem: item,
+          rating:   rating,
+          comment:  comment || "",
+          time:     new Date().toISOString(),
+          user:     uid
+        });
         showToast("Thanks for your feedback!");
       };
 
