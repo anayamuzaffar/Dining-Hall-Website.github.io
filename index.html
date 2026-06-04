@@ -737,6 +737,7 @@
       };
 
       const submitFeedback = (dhId, item, rating, comment) => {
+        if (dailyCnt >= 3) { showToast("Daily report limit reached (3/day)", "error"); return; }
         if (!fbDb()) { showToast("Database not connected", "error"); return; }
         fbPush(fbRef(fbDb(), "feedback"), {
           dhId:     dhId,
@@ -747,7 +748,8 @@
           user:     uid
         });
         setPoints(p => p + 10);
-        showToast("Thanks for your feedback! +10 pts");
+        setDailyCnt(c => c + 1);
+        showToast(`Thanks for your feedback! +10 pts · ${2 - dailyCnt} left today`);
       };
 
       const getTrafficAvg = (dhId) => {
