@@ -2,7 +2,7 @@
 
 **A real-time dining hall status app for Northwestern University students.**
 
-Live Site → [dining-hall-website.github.io](https://anayamuzaffar.github.io/Dining-Hall-Website.github.io/)
+Live Site → [anayamuzaffar.github.io/Dining-Hall-Website.github.io](https://anayamuzaffar.github.io/Dining-Hall-Website.github.io/)
 
 ---
 
@@ -67,12 +67,12 @@ Firebase Realtime Database
 No installation required. Just clone the repo and open the file:
 
 ```bash
-git clone https://github.com/your-username/Dining-Hall-Website.github.io.git
+git clone https://github.com/anayamuzaffar/Dining-Hall-Website.github.io.git
 cd Dining-Hall-Website.github.io
 open index.html
 ```
 
-Or visit the live site directly at [dining-hall-website.github.io](https://dining-hall-website.github.io).
+Or visit the live site directly at [anayamuzaffar.github.io/Dining-Hall-Website.github.io](https://anayamuzaffar.github.io/Dining-Hall-Website.github.io/).
 
 ---
 
